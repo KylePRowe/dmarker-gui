@@ -268,7 +268,7 @@ const ICONS = [
     },
     {
         "name": "Construction Warning",
-        "value": "constructionwarning"
+        "value": "construction"
     },
     {
         "name": "Lock",
@@ -345,8 +345,7 @@ function Initialize() {
   var icon_select = document.getElementById("icon");
 
   var set_options = SET_NAMES.map((v) => { return `<option value=${v.value}>${v.name}</option>` })
-  var icon_options = ICONS.map((v) => { return `<option value=${v.value}>${v.name}</option>` });
-
+  var icon_options = ICONS.map((v) => { return `<option value=${v.value} style=\"background-image:url(assets/icons/${v.icon ?? ""});\">${v.name}</option>` });
 
   set_select.innerHTML = set_options;
   icon_select.innerHTML = icon_options;
@@ -370,7 +369,7 @@ function generateMarker(e) {
   var out_dmarker_starter = "/dmarker";
   var out_action = action;
   var out_marker_name = "\"" + marker_name + "\"";
-  var out_marker_id = "id:" + marker_name.replace(" ", "_").replace(/[\s`~!@#$%^&*()|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '').toLowerCase();
+  var out_marker_id = "id:" + marker_name.replace(/ /g, "_").replace(/[`~!@#$%^&*()|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '').toLowerCase();
   var out_set_name = "set:" + set_name;
   var out_icon = "icon:" + icon;
 
@@ -380,14 +379,26 @@ function generateMarker(e) {
 
 function updateForm() {
   var action_value = document.getElementById("action").value;
+  var icon_value = document.getElementById("icon").value;
 
-  var icon = document.getElementById('icon-container');
+  console.log(action_value)
+
+  var icon_select = document.getElementById('icon-container');
+  var icon_preview = document.getElementById('icon-prev');
 
   if (action_value == "delete") {
-    icon.classList.add('hidden');
+    console.log("hi")
+    icon_select.style.display = 'none';
   } else {
-    icon.classList.remove('hidden');
+    icon_select.style.display = 'flex';
   }
+
+  icon_preview.src = "./assets/icons/" + ICONS.find((i) => i.value == icon_value).value + ".png";
+}
+
+function loadErrImage(e) {
+  e.target.src = "./assets/icons/error-image-generic.png"
+  e.onerror = null
 }
 
 function copyText() {

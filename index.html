@@ -2,6 +2,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="./styles.css">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
   </head>
   <script src="./functions.js"></script>
   <body onload="Initialize()">
@@ -9,7 +10,7 @@
       dmarker GUI
     </div>
     <hr/>
-    <div id="form" class="section">
+    <div id="form" class="section" style="margin-bottom: 30px;">
       <form style="width: 100%;" onsubmit="generateMarker(event)">
         <div id="action-container">
           <label for="action">Action: </label>
@@ -28,18 +29,23 @@
           <select id="set_name" name="set_name">
           </select>
         </div>
-        <div id="icon-container">
+        <div id="icon-container" style="display: flex; flex-direction: column; width: 100%;">
           <label for="icon">Icon: </label>
-          <select id="icon" name="icon">
-          </select>
+          <div style="display: flex; width: 100%; align-items: center;">
+            <div style="width: 20px"><img src="assets/icons/default.png" id="icon-prev" style="min-width: 100%;" onerror="loadErrImage(event)"/></div>
+            <select style="margin-left: 10px;" id="icon" name="icon" onchange="updateForm()">
+            </select>
+          </div>
         </div>
         <input type="submit" id="submit" name="submit" value="Generate" onsubmit="generateMarker()"/>
       </form>
     </div>
-    <h1 style="margin:30px;">Output</h1>
-    <div id="output" class="section" style=" display: flex; justify-content: center; gap: 1rem;">
-      <div id="inner-output" style="background-color: #CCCCCC; padding: 20px; border-radius: 20px; font-weight: 600; min-height: 20px; width: 90%; flex: 8"></div>
-      <button id="copy-button" disabled onclick="copyText()">Copy</button>
+    <div id="outer-output" class="section">
+      Output
+      <div id="output" class="section" style=" display: flex; justify-content: center; gap: 1rem;">
+        <div id="inner-output" style="background-color: #CCCCCC; padding: 20px; border-radius: 20px; font-weight: 600; min-height: 20px; width: 90%; flex: 8"></div>
+        <button id="copy-button" disabled onclick="copyText()">Copy</button>
+      </div>
     </div>
   </body>
 </html>
