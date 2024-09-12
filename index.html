@@ -1,50 +1,57 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
   </head>
-  <script src="./functions.js"></script>
+  <script src="./constants.js"></script>
+  <script src="./index.js"></script>
   <body onload="Initialize()">
-    <div class="center" style="font-weight: bold;">
+    <div class="center" style="font-weight: bold; font-size: 48px;">
       dmarker GUI
     </div>
     <hr/>
-    <div id="form" class="section" style="margin-bottom: 30px;">
+    <div id="div_gui_form" class="section" style="margin-bottom: 30px;">
       <form style="width: 100%;" onsubmit="generateMarker(event)">
-        <div id="action-container">
-          <label for="action">Action: </label>
-          <select id="action" name="action" onchange="updateForm()">
+        <div id="div_action_container">
+          <label id="lbl_action" for="slt_action">Action: </label>
+          <select id="slt_action" name="slt_action" onchange="updateForm()">
             <option value="add">Add</option>
             <option value="delete">Delete</option>
-            <option value="edit">Edit</option>
+            <option value="update">Update</option>
           </select>
         </div>
-        <div id="marker_name-container">
-          <label for="marker_name">Name of marker: </label>
-          <input type="text" id="marker_name" name="name_of_marker"/>
+        <div id="div_markername_container">
+          <label id="lbl_markername" for="txt_markername">Name: </label>
+          <input type="text" id="txt_markername" name="txt_markername"/>
         </div>
-        <div id="set_name-container">
-          <label for="set_name">Name of set: </label>
-          <select id="set_name" name="set_name">
+        <div id="div_newmarkername_container" style="display: none;">
+          <label id="lbl_newmarkername" for="txt_newlabel">New name (optional, will NOT change ID): </label>
+          <input type="text" id="txt_newmarkername" name="txt_newmarkername"/>
+        </div>
+        <div id="div_setname_container">
+          <label id="lbl_setname" for="slt_setname">Name of set: </label>
+          <select id="slt_setname" name="slt_setname">
           </select>
         </div>
-        <div id="icon-container" style="display: flex; flex-direction: column; width: 100%;">
-          <label for="icon">Icon: </label>
-          <div style="display: flex; width: 100%; align-items: center;">
-            <div style="width: 20px"><img src="assets/icons/default.png" id="icon-prev" style="min-width: 100%;" onerror="loadErrImage(event)"/></div>
-            <select style="margin-left: 10px;" id="icon" name="icon" onchange="updateForm()">
+        <div id="div_icon_container" style="display: flex; flex-direction: column; width: 100%;">
+          <label id="lbl_icon" for="slt_icon">Icon: </label>
+          <div id="div_icon_container_inner" style="display: flex; width: 100%; align-items: center;">
+            <div id="div_icon_container_img" style="width: 20px">
+              <img src="assets/icons/default.png" id="img_icon_prev" style="min-width: 100%;" onerror="loadErrImage(event)"/>
+            </div>
+            <select id="slt_icon" name="slt_icon" style="margin-left: 10px;" onchange="updateForm()">
             </select>
           </div>
         </div>
-        <input type="submit" id="submit" name="submit" value="Generate" onsubmit="generateMarker()"/>
+        <input id="btn_submit" name="btn_submit" type="submit" value="Generate" onsubmit="generateMarker()"/>
       </form>
     </div>
-    <div id="outer-output" class="section">
-      Output
-      <div id="output" class="section" style=" display: flex; justify-content: center; gap: 1rem;">
-        <div id="inner-output" style="background-color: #CCCCCC; padding: 20px; border-radius: 20px; font-weight: 600; min-height: 20px; width: 90%; flex: 8"></div>
-        <button id="copy-button" disabled onclick="copyText()">Copy</button>
+    <div id="div_output_container" class="section">
+      Output: 
+      <div id="div_output_container_inner" style="margin-top: 10px; display: flex; justify-content: center; gap: 1rem;">
+        <div id="div_output_container_display" style="background-color: #CCCCCC; padding: 20px; border-radius: 20px; font-weight: 600; min-height: 20px; width: 90%; flex: 8"></div>
+        <button id="btn_copybutton" disabled onclick="copyText()">Copy</button>
       </div>
     </div>
   </body>

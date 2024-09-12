@@ -36,9 +36,7 @@ input[type=submit]:hover {
 
 .center {
   text-align: center;
-  width: 100%;
-  font-size: 48px;
-  padding: 20px;
+  margin: 0 auto;
 }
 
 html {
@@ -50,7 +48,7 @@ html {
   visibility: hidden;
 }
 
-#copy-button {
+#btn_copybutton {
   background-color: #CCCCCC;
   float: right;
   border-radius: 20px;
@@ -59,7 +57,7 @@ html {
   flex: 1;
 }
 
-#copy-button:hover:enabled {
+#btn_copybutton:hover:enabled {
   background-color: #BBBBBB;
   cursor: pointer;
 }
