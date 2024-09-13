@@ -59,6 +59,7 @@ function updateForm() {
   } else if (action_value == "update") {
     lbl_markername.innerHTML = "ID: ";
     newmarkername_container.style.display = 'block';
+    icon_select.style.display = 'flex';
   } else {
     lbl_markername.innerHTML = "Name: ";
     txt_newmarkername.value = "";
