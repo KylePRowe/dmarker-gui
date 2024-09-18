@@ -1,5 +1,9 @@
 const SET_NAMES = [
   {
+    "name": "Farms",
+    "value": "farms"
+  },
+  {
     "name": "Landmarks",
     "value": "landmarks"
   },
