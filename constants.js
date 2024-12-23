@@ -6,6 +6,10 @@ const SET_NAMES = [
   {
     "name": "Player Homes",
     "value": "player_homes"
+  },
+  {
+    "name": "Settlements",
+    "value": "settlements"
   }
 ]
 
